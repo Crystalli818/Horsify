@@ -17,3 +17,12 @@ def my_function(fname):
 
 my_function("Ollie")
 my_function("Amber")
+
+horsepoints = {
+    "hooves" : (0.5,1.23),
+    "muzzle" : (0.8789,8.8247)
+}
+
+def Olly():
+    print(horsepoints)
+Olly()

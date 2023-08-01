@@ -19,10 +19,8 @@ public class PlayerScript : MonoBehaviour
             print(horse);
         }
          int[] numbers = {5,6,7,8,9,10};
-    [] weight = {1.3, 1.5, 1.7, 1.9};
-    // Start is called before the first frame update
-    void Start()
-    {
+    float[] weight = {1.3f, 1.5f, 1.7f, 1.9f};
+
     // for loop example
         for(int i = 0; i< weight.Length; i++){
             print(weight [i]);
@@ -36,8 +34,7 @@ public class PlayerScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update(
-    )
+    void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space)){
 
