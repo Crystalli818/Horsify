@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class NewHorseScreen : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -15,4 +15,13 @@ public class NewHorseScreen : MonoBehaviour
     {
         
     }
+    public void ReturnToScreen(bool willsave)
+    {
+        if(willsave){
+    // save our new horse  
+        }
+        SceneManager.LoadScene(1);
+
+    }
+
 }

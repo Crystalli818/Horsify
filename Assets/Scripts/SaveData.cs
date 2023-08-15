@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SaveData : MonoBehaviour
 {
-    public TestClass tester = new TestClass();
+    public Horse tester = new Horse();
     public void SaveToJson()
     {
         string dataToStore = JsonUtility.ToJson(tester);
@@ -16,7 +16,7 @@ public class SaveData : MonoBehaviour
     {
         string filePath = Application.persistentDataPath + "/TestData.json";
         string readData = System.IO.File.ReadAllText(filePath);
-        tester = JsonUtility.FromJson<TestClass>(readData);
+        tester = JsonUtility.FromJson<Horse>(readData);
     }
 
 
@@ -36,8 +36,32 @@ if(Input.GetKeyDown(KeyCode.L))
     }
 }
 [System.Serializable]
-public class TestClass
-{
-    public int points;
-    public string playerName;
+public class Horse{
+    string horseName;
+    int age;
+    string gender;
+    string life;
+    string medication;
+    string features;
+
+    public Horse(string newHorseName, int newAge,
+     string newGender, string newLife, string newMeds, string newFeatures){
+        this.horseName = newHorseName;
+        this.age = newAge;
+        this.gender = newGender;
+        this.life = newLife;
+        this.medication = newMeds;
+        this.features = newFeatures;
+     }
+
+    public Horse()
+    {
+        this.horseName = "New Horse";
+        this.age = 84910;
+        this.gender = "baby";
+        this.life = "great";
+        this.medication = "anti hyper pills";
+        this.features = "pretty boy";   
+    }
+
 }
