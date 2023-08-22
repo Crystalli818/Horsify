@@ -65,3 +65,8 @@ public class Horse{
     }
 
 }
+[System.Serializable]
+public class SaveHorse{
+
+public List<Horse> horses = new List<Horse>();
+}
