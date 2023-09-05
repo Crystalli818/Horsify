@@ -4,22 +4,36 @@ using UnityEngine;
 
 public class SaveData : MonoBehaviour
 {
-    public Horse tester = new Horse();
-    public void SaveToJson()
+    public static SaveData instance;
+    public static Horse tester = new Horse();
+    public static SaveHorse savedata = new SaveHorse();
+    public static void SaveToJson()
     {
-        string dataToStore = JsonUtility.ToJson(tester);
+        string dataToStore = JsonUtility.ToJson(savedata);
         string filePath = Application.persistentDataPath +"/TestData.json";
     Debug.Log(filePath);
         System.IO.File.WriteAllText(filePath, dataToStore);
     }
-    public void LoadFromJson()
+    public static void LoadFromJson()
     {
         string filePath = Application.persistentDataPath + "/TestData.json";
         string readData = System.IO.File.ReadAllText(filePath);
-        tester = JsonUtility.FromJson<Horse>(readData);
+        savedata = JsonUtility.FromJson<SaveHorse>(readData);
+    }
+    public static void SavedNewHorseToJson(Horse horse){
+
+        savedata.horses.Add(horse);
+        SaveToJson();
     }
 
-
+    void Start(){
+        if(instance == null){
+            instance = this;
+        }
+        else{
+            Destroy(this);
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -37,12 +51,12 @@ if(Input.GetKeyDown(KeyCode.L))
 }
 [System.Serializable]
 public class Horse{
-    string horseName;
-    int age;
-    string gender;
-    string life;
-    string medication;
-    string features;
+    public string horseName;
+    public int age;
+    public string gender;
+    public string life;
+    public string medication;
+    public string features;
 
     public Horse(string newHorseName, int newAge,
      string newGender, string newLife, string newMeds, string newFeatures){
